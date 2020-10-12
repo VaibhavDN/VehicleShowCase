@@ -1,0 +1,131 @@
+body{
+    background-color: rgb(255, 235, 231);
+}
+
+.listDiv{
+    margin: 8px;
+    padding: 1%;
+    background-color: aliceblue;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    border-radius: 5px;
+    min-width: 50px;
+    max-height: 100vh;
+    overflow: auto;
+    animation: fadeInAnimation ease 2s;
+    animation-iteration-count: 1; 
+    animation-fill-mode: forwards; 
+}
+
+canvas{
+    background-color: aliceblue;
+    border: none;
+}
+
+#filterCarSelectList{
+    margin: 2px;
+    padding: 10px;
+    width: 98.5%;
+    border: 1px solid #ddd;
+    background-color: #f6f6f6;
+    text-decoration: none;
+    font-size: 18px;
+    color: black;
+    display: block;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    border-radius: 5px;
+    transition: 0.3s;
+    animation: fadeInAnimation ease 2s;
+    animation-iteration-count: 1; 
+    animation-fill-mode: forwards; 
+}
+
+ul{
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+li{
+    text-decoration: none;
+    margin: 2px;
+    padding: 10px;
+    text-align: left;
+    background-color: aliceblue;
+    display: block;
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    border-radius: 5px;
+    animation: fadeInAnimation ease 2s;
+    animation-iteration-count: 1; 
+    animation-fill-mode: forwards; 
+}
+
+@keyframes fadeInAnimation { 
+    0% { 
+        opacity: 0; 
+    } 
+    100% { 
+        opacity: 1; 
+    } 
+} 
+
+li:hover{
+    text-decoration: none;
+    margin: 2px;
+    padding: 10px;
+    text-align: left;
+    color: #FFF;
+    background-color: rgb(32, 161, 155);
+    display: block;
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.showCarDiv{
+    padding: 1%;
+    margin: 8px;
+    min-width: 50px;
+    background-color: aliceblue;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    border-radius: 5px;
+    animation: fadeInAnimation ease 2s;
+    animation-iteration-count: 1; 
+    animation-fill-mode: forwards; 
+}
+
+.statDiv{
+    padding: 1%;
+    margin: 8px;
+    flex: 1;
+    background-color: aliceblue;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    border-radius: 5px;
+    animation: fadeInAnimation ease 2s;
+    animation-iteration-count: 1; 
+    animation-fill-mode: forwards; 
+}
+
+.row{
+    margin: 5px;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey; 
+    border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgb(92, 92, 92); 
+    border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    transition: 0.3s;
+    background: rgba(32, 161, 154, 0.555); 
+}
