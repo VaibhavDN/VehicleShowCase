@@ -1,19 +1,97 @@
+@font-face {
+    font-family: Zefani;
+    src: url('Zefani.otf');
+}
+
+@keyframes fadeInOutAnimation { 
+    0% { 
+        opacity: 1; 
+    } 
+    50%{
+        opacity: 0.4;
+    }
+    100% { 
+        opacity: 1; 
+    } 
+} 
+
+@keyframes fadeInOutRevAnimation { 
+    0% { 
+        opacity: 1; 
+    } 
+    50%{
+        opacity: 0.4;
+    }
+    100% { 
+        opacity: 1; 
+    } 
+} 
+
+@keyframes fadeInAnimation { 
+    0% { 
+        opacity: 0; 
+    } 
+    100% { 
+        opacity: 1; 
+    } 
+}
+
 body{
+    padding: 1%;
     background-color: rgb(255, 235, 231);
 }
 
+.vehicleNameHeading{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.headDiv{
+    margin: 0 0 0 0;
+    padding: 0.5%;
+    background-color: aliceblue;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    border-radius: 5px;
+    overflow: auto;
+    text-align: center;
+    animation: fadeInAnimation ease 2s;
+    animation-iteration-count: 1; 
+    animation-fill-mode: forwards;
+    background-color: rgba(225, 255, 243, 0.856);
+}
+
+.headDiv h4{
+    margin-top: 1px;
+    text-align: center;
+    vertical-align: middle;
+    flex: 1;
+    font-family: Zefani;
+    color: rgb(71, 71, 97);
+    transition: 0.3s;
+    animation: fadeInOutRevAnimation ease 2s;
+    animation-iteration-count: 1; 
+    animation-fill-mode: forwards; 
+}
+
+.headDiv h4:hover{
+    color: #cfad3e;
+    transition: 0.3s;
+    animation: fadeInOutAnimation ease 2s;
+    animation-iteration-count: 1; 
+    animation-fill-mode: forwards; 
+}
+
 .listDiv{
-    margin: 8px;
+    margin: 1% 0.5% 0% 0%;
     padding: 1%;
     background-color: aliceblue;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     border-radius: 5px;
-    min-width: 50px;
-    max-height: 100vh;
+    max-height: 90vh;
     overflow: auto;
     animation: fadeInAnimation ease 2s;
     animation-iteration-count: 1; 
     animation-fill-mode: forwards; 
+    flex-grow: 1;
 }
 
 canvas{
@@ -26,10 +104,10 @@ canvas{
     padding: 10px;
     width: 98.5%;
     border: 1px solid #ddd;
-    background-color: #f6f6f6;
+    background-color: rgb(112, 111, 111);
     text-decoration: none;
     font-size: 18px;
-    color: black;
+    color: white;
     display: block;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     border-radius: 5px;
@@ -60,19 +138,8 @@ li{
     animation-fill-mode: forwards; 
 }
 
-@keyframes fadeInAnimation { 
-    0% { 
-        opacity: 0; 
-    } 
-    100% { 
-        opacity: 1; 
-    } 
-} 
-
 li:hover{
     text-decoration: none;
-    margin: 2px;
-    padding: 10px;
     text-align: left;
     color: #FFF;
     background-color: rgb(32, 161, 155);
@@ -85,26 +152,41 @@ li:hover{
 
 .showCarDiv{
     padding: 1%;
-    margin: 8px;
-    min-width: 50px;
+    margin: 1% 0.5% 0% 0.5%;
     background-color: aliceblue;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     border-radius: 5px;
     animation: fadeInAnimation ease 2s;
     animation-iteration-count: 1; 
-    animation-fill-mode: forwards; 
+    animation-fill-mode: forwards;
+    flex-grow: 1;
 }
 
 .statDiv{
     padding: 1%;
-    margin: 8px;
-    flex: 1;
+    margin: 1% 0% 0% 0.5%;
     background-color: aliceblue;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     border-radius: 5px;
     animation: fadeInAnimation ease 2s;
     animation-iteration-count: 1; 
-    animation-fill-mode: forwards; 
+    animation-fill-mode: forwards;
+    flex-grow: 1; 
+}
+
+.vehicleStats{
+    text-align: left;
+    color: #915608;
+    font-size: medium;
+    animation: fadeInAnimation ease 2s;
+    animation-iteration-count: 1; 
+    animation-fill-mode: forwards;
+    padding: 2%;
+}
+
+.vehicleStatsValues{
+    color: rgb(255, 102, 0);
+    transition: 0.3s;
 }
 
 .row{
@@ -116,16 +198,28 @@ li:hover{
 }
 
 ::-webkit-scrollbar-track {
-    box-shadow: inset 0 0 5px grey; 
+    box-shadow: inset 0 0 5px rgb(64, 114, 106); 
     border-radius: 2px;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: rgb(92, 92, 92); 
+    background:rgb(64, 114, 106); 
     border-radius: 2px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
     transition: 0.3s;
     background: rgba(32, 161, 154, 0.555); 
+}
+
+::-webkit-input-placeholder {
+    color: whitesmoke;
+}
+  
+:-ms-input-placeholder {
+    color: whitesmoke;
+}
+  
+::placeholder {
+    color: whitesmoke;
 }
