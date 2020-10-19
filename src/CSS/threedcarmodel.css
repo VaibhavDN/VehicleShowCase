@@ -104,7 +104,7 @@ canvas{
     padding: 10px;
     width: 98.5%;
     border: 1px solid #ddd;
-    background-color: rgb(112, 111, 111);
+    background-color: rgb(65, 116, 101);
     text-decoration: none;
     font-size: 18px;
     color: white;
@@ -151,7 +151,7 @@ li:hover{
 }
 
 .showCarDiv{
-    padding: 1%;
+    padding: 1.5%;
     margin: 1% 0.5% 0% 0.5%;
     background-color: aliceblue;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
@@ -198,12 +198,12 @@ li:hover{
 }
 
 ::-webkit-scrollbar-track {
-    box-shadow: inset 0 0 5px rgb(64, 114, 106); 
+    box-shadow: inset 0 0 5px rgb(65, 116, 101); 
     border-radius: 2px;
 }
 
 ::-webkit-scrollbar-thumb {
-    background:rgb(64, 114, 106); 
+    background:rgb(65, 116, 101);
     border-radius: 2px;
 }
 

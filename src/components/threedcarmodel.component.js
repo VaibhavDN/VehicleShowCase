@@ -1,6 +1,7 @@
 import React, {useState, useEffect, useRef, useMemo} from 'react'
 import ReactDOM from 'react-dom'
-import * as firebase from 'firebase'
+import firebase from 'firebase/app'
+import 'firebase/database'
 import { Canvas, useLoader, useFrame } from 'react-three-fiber'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 import { Suspense } from 'react'
@@ -8,9 +9,12 @@ import * as THREE from "three"
 import { OrbitControls } from "drei"
 import "../CSS/threedcarmodel.css"
 
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+console.log = ()=>{
+    //Print nothing
+}
+
 const firebaseConfig = {
-    
+    //Firebase Config
 }
 
 firebase.initializeApp(firebaseConfig)
@@ -50,15 +54,15 @@ const RenderCar = (props) => {
     console.log('Scene: ', scene)
     console.log('Animations: ', animations)
 
-    const mixer = useMemo(() => new THREE.AnimationMixer(scene), [animations])
+    const mixer = useMemo(() => new THREE.AnimationMixer(scene), [scene])
     
-    useEffect(() => animations.forEach(clip => mixer.clipAction(clip).play()), [])
+    useEffect(() => animations.forEach(clip => mixer.clipAction(clip).play()), [animations, mixer])
 
     return <primitive object={scene} />
 }
 
 const ShowCar = props => {
-    //TODO: Find a better way this is very inefficient
+    //TODO: Find a better way 
     const [lightInt, setLightInt] = useState(2)
     const [carSelected, setCarSelected] = useState("polestar 1")
     const [cameraZoom, setCameraZoom] = useState(25)
@@ -75,7 +79,7 @@ const ShowCar = props => {
     let newObjSize = Object.keys(props.carConfig).length
     console.log("props ", props.carConfig, newObjSize)
 
-    if(newObjSize != objsize){
+    if(newObjSize !== objsize){
         setObjsize(newObjSize)
     }
 
@@ -86,7 +90,7 @@ const ShowCar = props => {
         setCarList(list)
         console.log("Car: ", list)
 
-        if(objsize != 0){
+        if(objsize !== 0){
             let carConfig = props.carConfig
             console.log(carSelected)
             let configData = carConfig[carSelected]
@@ -110,7 +114,7 @@ const ShowCar = props => {
                 seats: seats
             })
         }
-    }, [objsize, carSelected])
+    }, [objsize, carSelected, props.carConfig])
 
     function filterFunction(){
         let input = document.getElementById("filterCarSelectList")
@@ -167,7 +171,7 @@ const ShowCar = props => {
                         <ShowCarName carName={carSelected}/>
                     </div>
                     <center>
-                    <Canvas style={{ height:window.innerHeight/1.5, width:window.innerWidth/2, zoom: 1, backgroundColor:"#EEE" }} orthographic camera={cameraConfig}>
+                    <Canvas style={{ height:window.innerHeight/1.5, width:window.innerWidth/1.95, zoom: 1, backgroundColor:"#EEE" }} orthographic camera={cameraConfig}>
                         <ambientLight />
                         <directionalLight intensity={lightInt} position={[0, 0, -45]} />
                         <directionalLight intensity={lightInt} position={[0, 0, -135]} />
@@ -181,15 +185,8 @@ const ShowCar = props => {
                         <directionalLight intensity={lightInt} position={[0, 0, 135]} />
                         <directionalLight intensity={lightInt} position={[0, 0, -45]} />
                         <directionalLight intensity={lightInt} position={[0, 0, -135]} />
-                        <rectAreaLight
-                            width={3}
-                            height={3}
-                            color={"#FFF"}
-                            intensity={10}
-                            position={[-2, 0, 5]}
-                            lookAt={[0, 0, 0]}
-                            penumbra={1}
-                            castShadow
+                        <rectAreaLight width={3} height={3} color={"#FFF"} intensity={10} 
+                            position={[-2, 0, 5]} lookAt={[0, 0, 0]} penumbra={1} castShadow 
                         />
 
                         <OrbitControls />
@@ -220,21 +217,6 @@ const ShowCar = props => {
     )
 }
 
-const ShowDetails = props =>{
-    const [carName, setcarName] = useState('cyberpunk2077')
-    let allCarsObj = props.allCars
-    //console.log(allCarsObj)
-    let carConfig = allCarsObj
-    console.log("allCarObj", carConfig, carName)
-    
-    return(
-        <div>
-            <ShowCar carName={carName} carConfig={carConfig}/>
-        </div>
-    )
-}
-
-
 const CarModels = ()=>{
     const [carDetailsStr, setCarDetailsStr] = useState({})
     let carStr = {}
@@ -245,8 +227,8 @@ const CarModels = ()=>{
             snapshot.forEach((child)=>{
                 let _key = child.key
                 let _value = child.val()
-                //console.log(_key, JSON.stringify(_value))
                 carStr[_key] = _value
+                //console.log(_key, JSON.stringify(_value))
             })
             setCarDetailsStr(carStr)
         })
@@ -256,22 +238,9 @@ const CarModels = ()=>{
 
     return(
         <div>
-            <ShowDetails allCars={carDetailsStr}/>
+            <ShowCar carConfig={carDetailsStr}/>
         </div>
     )
-    /*
-    return(
-        <div>
-            <div>
-                <CarName carModel="P911GT"/>
-            </div>
-            <div>
-                <ShowThreeDModel/>
-            </div>
-            
-        </div>
-    )
-    */
 }
 
 ReactDOM.render(<CarModels/>, document.getElementById('root'))
