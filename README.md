@@ -1,6 +1,6 @@
 ### VehicleShowCase
 
-A React.JS website that displays three dimensional view of vehicles and their specifications.
+A React.JS website that displays the three-dimensional view of vehicles and their specifications.
 
 Useful information:
 
