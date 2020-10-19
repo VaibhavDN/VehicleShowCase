@@ -1,0 +1,16 @@
+model1
+     |
+     - scene.bin
+     - scene.gltf
+model2
+     |
+     - scene.bin
+     - scene.gltf
+model3
+     |
+     - scene.bin
+     - scene.gltf
+
+so on..
+
+Here model1, model2 and model3 are 3-D model names as stored in the firebase database.
